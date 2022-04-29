@@ -8,50 +8,50 @@
 
 //testando essa parada de branch
 
-Player *p;
+Player *gasparzinho;
 
-void player_create()
+void player_criado()
 {
-    p = (Player *) malloc(sizeof(Player));
+    gasparzinho = (Player *) malloc(sizeof(Player));
 
-    p->texture = LoadTexture("assets/PNG/Retina/Player/player_03.png");
-    p->rec = (Rectangle) {
-        GetScreenWidth() / 2 - p->texture.width / 2,
-        GetScreenHeight() / 2 - p->texture.height / 2,
+    gasparzinho->imagem = LoadTexture("assets/PNG/Retina/Player/player_03.png");
+    gasparzinho->coordenada = (Rectangle) {
+        GetScreenWidth() / 2 - gasparzinho->imagem.width / 2,
+        GetScreenHeight() / 2 - gasparzinho->imagem.height / 2,
         DIMENSAO,
         DIMENSAO
     };
 
 }
 
-void player_destroy()
+void player_free()
 {
-    UnloadTexture(p->texture);
-    free(p);
+    UnloadTexture(gasparzinho->imagem);
+    free(gasparzinho);
 }
 
-void player_draw()
+void player_desenhado()
 {
-    if (p == NULL) {
+    if (gasparzinho == NULL) {
         return;
     }
 
     DrawTexture(
-        p->texture,
-        p->rec.x,
-        p->rec.y,
+        gasparzinho->imagem,
+        gasparzinho->coordenada.x,
+        gasparzinho->coordenada.y,
         WHITE
     );
 }
 
-void player_update()
+void player_move()
 {
     Vector2 delta = { 0 };
 
     delta.x = (IsKeyPressed(KEY_D) - IsKeyPressed(KEY_A)) * DIMENSAO;
     delta.y = (IsKeyPressed(KEY_S) - IsKeyPressed(KEY_W)) * DIMENSAO;
 
-    p->rec.x += delta.x;
-    p->rec.y += delta.y;
+    gasparzinho->coordenada.x += delta.x;
+    gasparzinho->coordenada.y += delta.y;
 
 }
