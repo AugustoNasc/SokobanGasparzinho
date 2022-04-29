@@ -1,6 +1,7 @@
 #ifndef MAPA_H
 #define MAPA_H
 
+#include "raylib.h"
 typedef struct{
     Texture2D imagem;
     Vector2 coordenada;

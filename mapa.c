@@ -1,3 +1,5 @@
+#include "raylib.h"
+#include "mapa.h"
 #define QTD_QUADRADOS 12 
 #define LARGURA 600
 #define DIMENSAO LARGURA/QTD_QUADRADOS
