@@ -5,23 +5,23 @@ int main(void)
 {
     InitWindow(800, 600, "Gasparzinho");
     SetTargetFPS(60);
-    player_create(); // instancia o jogador antes de entrar no Loop
+    player_criado(); // instancia o jogador antes de entrar no Loop
 
     
     while (!WindowShouldClose()) {
         // Game loop
-        player_update(); // movimentos, itens, pontuação...
+        player_move(); // movimentos, itens, pontuação...
 
         BeginDrawing();
             ClearBackground(BLACK);
 
-            player_draw();
+            player_desenhado();
 
         DrawFPS(0, 0);
     EndDrawing();
     }
 
-    player_destroy();
+    player_free();
     CloseWindow();
 
     return 0;

@@ -4,13 +4,13 @@
 #include "raylib.h"
 
 typedef struct {
-    Texture2D texture;
-    Rectangle rec;
+    Texture2D imagem;
+    Rectangle coordenada;
 } Player;
 
-void player_create();
-void player_destroy();
-void player_update();
-void player_draw();
+void player_criado();
+void player_free();
+void player_move();
+void player_desenhado();
 
 #endif
