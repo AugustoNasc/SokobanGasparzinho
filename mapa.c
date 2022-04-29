@@ -11,7 +11,7 @@ char **mapa_caractere(int level){
     if(level ==1){
         char mapa_caractere[QTD_QUADRADOS][QTD_QUADRADOS+1]={
                 "############",
-                "########@@@#",
+                "########@@P#",
                 "########BB@#",
                 "#+######@B@#",
                 "#+######@###",
