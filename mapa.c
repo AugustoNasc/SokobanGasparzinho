@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "mapa.h"
 #include <string.h>
+#include <stdio.h>
 
 #define QTD_QUADRADOS 12 
 #define LARGURA 600
@@ -41,20 +42,15 @@ int mapa_conseguiu(MAPA mapa){
 
 void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca, int level){ //desenha os mapas
 
-    if(level==1){
-    peca.imagem = LoadTexture("assets/mapa/ultimo.png");
+    char endereco[50];
+    sprintf(endereco, "assets/mapa/mapa%d.png", level);
+    peca.imagem = LoadTexture(endereco);
+
     peca.coordenada= (Vector2){0, 0};
     DrawTextureRec(  peca.imagem, 
                     (Rectangle) {0, 0, LARGURA, LARGURA}, 
                     peca.coordenada, 
-                    WHITE);}
-    if(level==2){
-    peca.imagem = LoadTexture("assets/mapa/ultimo.png");
-    peca.coordenada= (Vector2){0, 0};
-    DrawTextureRec(  peca.imagem, 
-                    (Rectangle) {0, 0, LARGURA, LARGURA}, 
-                    peca.coordenada, 
-                    WHITE);}
+                    WHITE);
                     
     for(int j=0; j<QTD_QUADRADOS; j++){
                 for(int k=0; k<QTD_QUADRADOS; k++){
