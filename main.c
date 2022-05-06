@@ -26,15 +26,24 @@ Quadrado peca;
 
 int main(void)
 {
+    char endereco[50];
+    FILE *arquivo;
     Music jogando;
     int flag=0;
+    int level=1;
+
+    sprintf(endereco, "mapastxt/mapa%d.txt", level);
+
+    arquivo = fopen(endereco, "rt");
+
     InitWindow(LARGURA, LARGURA, "Gasparzinho");
     InitAudioDevice();
     SetTargetFPS(60);
-    mapa_criando1(&mapa);
+    //mapa_criando1(&mapa);
+    fread(mapa.mapa, sizeof(char), 12*12, arquivo);
     mapa_especial(&mapa);
     
-    jogando = LoadMusicStream("C:/Users/augus/Downloads/terror.wav");
+    jogando = LoadMusicStream("assets/musica/terror.wav");
     PlayMusicStream(jogando);
     POSICAO;
     
@@ -54,7 +63,7 @@ int main(void)
         BeginDrawing();
             ClearBackground(BLACK);
             
-        mapa_desenhando(flag, mapa, peca);
+        mapa_desenhando(flag, mapa, peca, level);
         UpdateMusicStream(jogando);
         SetMusicVolume(jogando, 0.08);
         
@@ -64,11 +73,33 @@ int main(void)
 
          DrawFPS(0, 0);
     EndDrawing();
+
+    if(mapa_conseguiu(mapa)){
+
+        level++;
+
+        sprintf(endereco, "mapastxt/mapa%d.txt", level);
+
+        arquivo = fopen(endereco, "rt");
+
+        fread(mapa.mapa, sizeof(char), 12*13, arquivo);
+
+        mapa_especial(&mapa);
+
+        StopMusicStream(jogando);
+
+        POSICAO;
+        flag=0;
+
+        PlayMusicStream(jogando);
+    }
     }
     
     UnloadMusicStream(jogando);
     UnloadTexture(peca.imagem);
     CloseWindow();
+
+    fclose(arquivo);
 
     return 0;
 }

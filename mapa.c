@@ -6,91 +6,6 @@
 #define LARGURA 600
 #define DIMENSAO LARGURA/QTD_QUADRADOS
 
-void mapa_criando1(MAPA *mapa){
-
-    strcpy( (*mapa).mapa[0], "############" );
-    strcpy( (*mapa).mapa[1], "########@@P#" );
-    strcpy( (*mapa).mapa[2], "########BB@#" );
-    strcpy( (*mapa).mapa[3], "#+######@B@#" );
-    strcpy( (*mapa).mapa[4], "#+######@###" );
-    strcpy( (*mapa).mapa[5], "#+@@@@@@@###" );
-    strcpy( (*mapa).mapa[6], "#@@###@@@@##" );
-    strcpy( (*mapa).mapa[7], "######@@@@##" );
-    strcpy( (*mapa).mapa[8], "############" );
-    strcpy( (*mapa).mapa[9], "############" );
-    strcpy( (*mapa).mapa[10], "############" );
-    strcpy( (*mapa).mapa[11], "############" );
-
-}
-
-void mapa_criando2(MAPA *mapa){
-
-    strcpy( (*mapa).mapa[0], "############" );
-    strcpy( (*mapa).mapa[1], "########@@P#" );
-    strcpy( (*mapa).mapa[2], "########BB@#" );
-    strcpy( (*mapa).mapa[3], "#+######@B@#" );
-    strcpy( (*mapa).mapa[4], "#+######@###" );
-    strcpy( (*mapa).mapa[5], "#+@@@@@@@###" );
-    strcpy( (*mapa).mapa[6], "#@@###@@@@##" );
-    strcpy( (*mapa).mapa[7], "######@@@@##" );
-    strcpy( (*mapa).mapa[8], "############" );
-    strcpy( (*mapa).mapa[9], "############" );
-    strcpy( (*mapa).mapa[10], "############" );
-    strcpy( (*mapa).mapa[11], "############" );
-
-}
-
-void mapa_criando3(MAPA *mapa){
-
-    strcpy( (*mapa).mapa[0], "############" );
-    strcpy( (*mapa).mapa[1], "########@@P#" );
-    strcpy( (*mapa).mapa[2], "########BB@#" );
-    strcpy( (*mapa).mapa[3], "#+######@B@#" );
-    strcpy( (*mapa).mapa[4], "#+######@###" );
-    strcpy( (*mapa).mapa[5], "#+@@@@@@@###" );
-    strcpy( (*mapa).mapa[6], "#@@###@@@@##" );
-    strcpy( (*mapa).mapa[7], "######@@@@##" );
-    strcpy( (*mapa).mapa[8], "############" );
-    strcpy( (*mapa).mapa[9], "############" );
-    strcpy( (*mapa).mapa[10], "############" );
-    strcpy( (*mapa).mapa[11], "############" );
-
-}
-
-void mapa_criando4(MAPA *mapa){
-
-    strcpy( (*mapa).mapa[0], "############" );
-    strcpy( (*mapa).mapa[1], "########@@P#" );
-    strcpy( (*mapa).mapa[2], "########BB@#" );
-    strcpy( (*mapa).mapa[3], "#+######@B@#" );
-    strcpy( (*mapa).mapa[4], "#+######@###" );
-    strcpy( (*mapa).mapa[5], "#+@@@@@@@###" );
-    strcpy( (*mapa).mapa[6], "#@@###@@@@##" );
-    strcpy( (*mapa).mapa[7], "######@@@@##" );
-    strcpy( (*mapa).mapa[8], "############" );
-    strcpy( (*mapa).mapa[9], "############" );
-    strcpy( (*mapa).mapa[10], "############" );
-    strcpy( (*mapa).mapa[11], "############" );
-
-}
-
-void mapa_criando5(MAPA *mapa){
-
-    strcpy( (*mapa).mapa[0], "############" );
-    strcpy( (*mapa).mapa[1], "########@@P#" );
-    strcpy( (*mapa).mapa[2], "########BB@#" );
-    strcpy( (*mapa).mapa[3], "#+######@B@#" );
-    strcpy( (*mapa).mapa[4], "#+######@###" );
-    strcpy( (*mapa).mapa[5], "#+@@@@@@@###" );
-    strcpy( (*mapa).mapa[6], "#@@###@@@@##" );
-    strcpy( (*mapa).mapa[7], "######@@@@##" );
-    strcpy( (*mapa).mapa[8], "############" );
-    strcpy( (*mapa).mapa[9], "############" );
-    strcpy( (*mapa).mapa[10], "############" );
-    strcpy( (*mapa).mapa[11], "############" );
-
-}
-
 
 void mapa_especial(MAPA *mapa){//mapa vai ser global
     for(int i=0; i<QTD_QUADRADOS; i++){
@@ -124,14 +39,22 @@ int mapa_conseguiu(MAPA mapa){
     }
 }
 
-void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca){ //desenha os mapas
+void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca, int level){ //desenha os mapas
 
+    if(level==1){
     peca.imagem = LoadTexture("assets/mapa/ultimo.png");
     peca.coordenada= (Vector2){0, 0};
     DrawTextureRec(  peca.imagem, 
                     (Rectangle) {0, 0, LARGURA, LARGURA}, 
                     peca.coordenada, 
-                    WHITE);
+                    WHITE);}
+    if(level==2){
+    peca.imagem = LoadTexture("assets/mapa/ultimo.png");
+    peca.coordenada= (Vector2){0, 0};
+    DrawTextureRec(  peca.imagem, 
+                    (Rectangle) {0, 0, LARGURA, LARGURA}, 
+                    peca.coordenada, 
+                    WHITE);}
                     
     for(int j=0; j<QTD_QUADRADOS; j++){
                 for(int k=0; k<QTD_QUADRADOS; k++){

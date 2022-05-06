@@ -17,13 +17,9 @@ typedef struct{
 
 }MAPA;
 
-void mapa_criando1(MAPA *mapa);
-void mapa_criando2(MAPA *mapa);
-void mapa_criando3(MAPA *mapa);
-void mapa_criando4(MAPA *mapa);
 void mapa_especial(MAPA *mapa);
 int mapa_conseguiu(MAPA mapa);
-void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca);
+void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca, int level);
 
 
 #endif
