@@ -2,6 +2,7 @@
 #include "mapa.h"
 #include <stdio.h>
 #include "movimentos.h"
+#include "voltajogada.h"
 
 void TROCA_VAZIO(MAPA *mapa, int *x, int *y, int cont1, int cont2){
 
@@ -14,7 +15,7 @@ void TROCA_VAZIO(MAPA *mapa, int *x, int *y, int cont1, int cont2){
             }
 }
 
-void TROCA_CAIXA(int *x, int *y, int cont1, int cont2, MAPA *mapa){
+void TROCA_CAIXA(int *x, int *y, int cont1, int cont2, MAPA *mapa, int level){
 
   if(*x+2*cont1>=0 && *x+2*cont1<12 && *y+2*cont2>=0 && *y+2*cont2<12){
 
@@ -33,6 +34,7 @@ void TROCA_CAIXA(int *x, int *y, int cont1, int cont2, MAPA *mapa){
                       (*mapa).mapa[*y][*x]= '@';
                       *y=*y+cont2;
                       *x=*x+cont1;  
+                      registrando_jogadas(*mapa, level);
 
               }
           }
@@ -40,7 +42,7 @@ void TROCA_CAIXA(int *x, int *y, int cont1, int cont2, MAPA *mapa){
 
 }
 
-void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa){
+void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa, int level){
     if((*mapa).mapa[*y][*x]=='P'){
 
 
@@ -52,7 +54,7 @@ void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa){
         TROCA_VAZIO(mapa, x, y, cont1, cont2);}
 
       if(*x+2*cont1>=0 && *x+2*cont1<12 && *y+2*cont2>=0 && *y+2*cont2<12){
-        TROCA_CAIXA(x, y, cont1, cont2, mapa);}
+        TROCA_CAIXA(x, y, cont1, cont2, mapa, level);}
 
 
     }
@@ -64,7 +66,7 @@ void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa){
         TROCA_VAZIO(mapa, x, y, cont1, cont2);}
 
       if(*x+2*cont1>=0 && *x+2*cont1<12 && *y+2*cont2>=0 && *y+2*cont2<12){
-        TROCA_CAIXA(x, y, cont1, cont2, mapa);}
+        TROCA_CAIXA(x, y, cont1, cont2, mapa, level);}
 
 
     }
@@ -75,7 +77,7 @@ void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa){
         TROCA_VAZIO(mapa, x, y, cont1, cont2);}
 
      if(*x+2*cont1>=0 && *x+2*cont1<12 && *y+2*cont2>=0 && *y+2*cont2<12){
-        TROCA_CAIXA(x, y, cont1, cont2, mapa);}
+        TROCA_CAIXA(x, y, cont1, cont2, mapa, level);}
 
 
     }
@@ -87,7 +89,7 @@ void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa){
         TROCA_VAZIO(mapa, x, y, cont1, cont2);}
 
       if(*x+2*cont1>=0 && *x+2*cont1<12 && *y+2*cont2>=0 && *y+2*cont2<12){
-        TROCA_CAIXA(x, y, cont1, cont2, mapa);}
+        TROCA_CAIXA(x, y, cont1, cont2, mapa, level);}
 
 
     }
