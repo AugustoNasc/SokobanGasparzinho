@@ -4,7 +4,7 @@
 #include "movimentos.h"
 #include "voltajogada.h"
 
-void TROCA_VAZIO(MAPA *mapa, int *x, int *y, int cont1, int cont2){
+void TROCA_VAZIO(MAPA *mapa, int *x, int *y, int cont1, int cont2, int level){
 
             char aux;
             if ((*mapa).mapa[*y+cont2][*x+cont1] == '@'||(*mapa).mapa[*y+cont2][*x+cont1] == '+'){
@@ -12,6 +12,7 @@ void TROCA_VAZIO(MAPA *mapa, int *x, int *y, int cont1, int cont2){
                   (*mapa).mapa[*y+cont2][*x+cont1]=(*mapa).mapa[*y][*x];
                   (*mapa).mapa[*y][*x]= aux;
                   *x=*x+cont1; *y=*y+cont2;
+                  registrando_jogadas(*mapa, level);
             }
 }
 
@@ -51,7 +52,7 @@ void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa, int level){
     {
       cont1=-1; cont2=0;
       if(*x+cont1>=0 && *x+cont1<12 && *y+cont2>=0 && *y+cont2<12){
-        TROCA_VAZIO(mapa, x, y, cont1, cont2);}
+        TROCA_VAZIO(mapa, x, y, cont1, cont2, level);}
 
       if(*x+2*cont1>=0 && *x+2*cont1<12 && *y+2*cont2>=0 && *y+2*cont2<12){
         TROCA_CAIXA(x, y, cont1, cont2, mapa, level);}
@@ -63,7 +64,7 @@ void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa, int level){
     {
         cont1=1; cont2=0;
       if(*x+cont1>=0 && *x+cont1<12 && *y+cont2>=0 && *y+cont2<12){
-        TROCA_VAZIO(mapa, x, y, cont1, cont2);}
+        TROCA_VAZIO(mapa, x, y, cont1, cont2, level);}
 
       if(*x+2*cont1>=0 && *x+2*cont1<12 && *y+2*cont2>=0 && *y+2*cont2<12){
         TROCA_CAIXA(x, y, cont1, cont2, mapa, level);}
@@ -74,7 +75,7 @@ void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa, int level){
     {
         cont1=0; cont2=1;
       if(*x+cont1>=0 && *x+cont1<12 && *y+cont2>=0 && *y+cont2<12){
-        TROCA_VAZIO(mapa, x, y, cont1, cont2);}
+        TROCA_VAZIO(mapa, x, y, cont1, cont2, level);}
 
      if(*x+2*cont1>=0 && *x+2*cont1<12 && *y+2*cont2>=0 && *y+2*cont2<12){
         TROCA_CAIXA(x, y, cont1, cont2, mapa, level);}
@@ -86,7 +87,7 @@ void movimentos_move(int *x,int *y,int gFlag, MAPA *mapa, int level){
     {
         cont1=0; cont2=-1;
       if(*x+cont1>=0 && *x+cont1<12 && *y+cont2>=0 && *y+cont2<12){
-        TROCA_VAZIO(mapa, x, y, cont1, cont2);}
+        TROCA_VAZIO(mapa, x, y, cont1, cont2, level);}
 
       if(*x+2*cont1>=0 && *x+2*cont1<12 && *y+2*cont2>=0 && *y+2*cont2<12){
         TROCA_CAIXA(x, y, cont1, cont2, mapa, level);}
