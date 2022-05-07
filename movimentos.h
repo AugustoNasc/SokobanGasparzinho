@@ -4,7 +4,7 @@
 #include "mapa.h"
 #include "raylib.h"
 
-void TROCA_VAZIO(MAPA *mapa, int *gX, int *gY, int cont1, int cont2, int level);
+void TROCA_VAZIO(MAPA *mapa, int *gX, int *gY, int cont1, int cont2, int level, int *ja_andou);
 
 void TROCA_CAIXA(int *x, int *y, int cont1, int cont2, MAPA *mapa, int level);
 

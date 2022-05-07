@@ -91,6 +91,59 @@ int main(void)
                 POSICAO;
            }
         }
+       else if(IsKeyPressed(KEY_X)){ 
+
+            mapa = mapa_rezetar(level);
+
+            mapa_especial(&mapa);
+
+            StopMusicStream(jogando);
+
+            POSICAO;
+            flag=0;
+
+            PlayMusicStream(jogando);
+        }
+        //provisorio, so para admins
+       else if(IsKeyPressed(KEY_P)){ 
+           apagar_jogadas(level);
+            level++;
+
+            sprintf(endereco, "mapastxt/mapa%d.txt", level);
+
+            arquivo = fopen(endereco, "rt");
+
+            fread(mapa.mapa, sizeof(char), 12*13, arquivo);
+
+            mapa_especial(&mapa);
+
+            StopMusicStream(jogando);
+
+            POSICAO;
+            flag=0;
+
+            PlayMusicStream(jogando);
+        }
+
+       else if(IsKeyPressed(KEY_O)){ 
+           apagar_jogadas(level);
+            level--;
+
+            sprintf(endereco, "mapastxt/mapa%d.txt", level);
+
+            arquivo = fopen(endereco, "rt");
+
+            fread(mapa.mapa, sizeof(char), 12*13, arquivo);
+
+            mapa_especial(&mapa);
+
+            StopMusicStream(jogando);
+
+            POSICAO;
+            flag=0;
+
+            PlayMusicStream(jogando);
+        }
         
        
         

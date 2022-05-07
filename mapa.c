@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "mapa.h"
+#include "voltajogada.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -73,9 +74,9 @@ void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca, int level){ //desenha 
                             WHITE);
                     }
                     
-                    if(mapa.especial_atual[j][k]==1 && (mapa.mapa[j][k]=='@'||mapa.mapa[j][k]=='+')){
+                    /* if(mapa.especial_atual[j][k]==1 && (mapa.mapa[j][k]=='@'||mapa.mapa[j][k]=='+')){
                                 
-                    peca.imagem = LoadTexture("assets/mapa/adicionado mapa/environment_08.png");
+                     peca.imagem = LoadTexture("assets/mapa/adicionado mapa/environment_06.png");
                 
                     peca.coordenada = (Vector2) {
                         k*(DIMENSAO),
@@ -87,20 +88,20 @@ void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca, int level){ //desenha 
                             (Rectangle) {0, 0, DIMENSAO, DIMENSAO}, 
                             peca.coordenada, 
                             WHITE);
-                    }
+                    }  */
                     
                     
                     if(mapa.mapa[j][k]=='B'){ //box
                     peca.imagem = LoadTexture("assets/mapa/adicionado mapa/crate_12.png");
                     
                     peca.coordenada = (Vector2) {
-                        k*(DIMENSAO),
-                        j*(DIMENSAO)
+                        k*(DIMENSAO)+3,
+                        j*(DIMENSAO)+3
                     };
                     
                     DrawTextureRec(
                             peca.imagem, 
-                            (Rectangle) {0, 0, DIMENSAO, DIMENSAO}, 
+                            (Rectangle) {0, 0, DIMENSAO-7, DIMENSAO-7}, 
                             peca.coordenada, 
                     WHITE);
                     }
@@ -109,5 +110,25 @@ void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca, int level){ //desenha 
                 
     }
 
+}
+
+MAPA mapa_rezetar(int level){
+
+            char endereco[50];
+            MAPA mapinha;
+
+            FILE *arquivo;
+
+            apagar_jogadas(level);
+
+            sprintf(endereco, "mapastxt/mapa%d.txt", level);
+
+            arquivo = fopen(endereco, "rt");
+
+            fread(mapinha.mapa, sizeof(char), 12*13, arquivo);
+
+            mapa_especial(&mapinha);
+            
+            return mapinha;
 }
 

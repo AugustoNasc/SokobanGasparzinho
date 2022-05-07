@@ -20,6 +20,7 @@ typedef struct{
 void mapa_especial(MAPA *mapa);
 int mapa_conseguiu(MAPA mapa);
 void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca, int level);
+MAPA mapa_rezetar(int level);
 
 
 #endif
