@@ -29,6 +29,7 @@ int main(void)
 {
     FILE *arquivo;
     Music jogando;
+    Sound conseguiu;
     int flag=0;
     int level=1;
 
@@ -56,6 +57,8 @@ int main(void)
     
     jogando = LoadMusicStream("assets/musica/terror.wav");
     PlayMusicStream(jogando);
+
+    conseguiu = LoadSound("assets/musica/fim_fase.mp3");
 
     int voltando=0;
     while (!WindowShouldClose()) {
@@ -184,7 +187,8 @@ int main(void)
 
 
             StopMusicStream(jogando);
-
+            PlaySound(conseguiu);
+            SetSoundVolume(conseguiu, 0.3);
             POSICAO;
             flag=0;
 
@@ -193,6 +197,7 @@ int main(void)
     }
     apagar_jogadas(level);
     UnloadMusicStream(jogando);
+    UnloadSound(conseguiu);
     mapa_Unload(&imagens, &fundo);
     CloseWindow();
 
