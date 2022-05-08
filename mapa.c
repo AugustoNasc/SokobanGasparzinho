@@ -7,6 +7,18 @@
 #define QTD_QUADRADOS 12 
 #define LARGURA 600
 #define DIMENSAO LARGURA/QTD_QUADRADOS
+#define PINTAR(parametro) (parametro).coordenada.x = k*DIMENSAO;\
+                          (parametro).coordenada.y = j*DIMENSAO;\
+          \
+                          if(gFlag==1){ (parametro).coordenada.x-=15; }\
+                          if(gFlag==2){ (parametro).coordenada.x+=6; }\
+                          \
+                          DrawTextureRec(\
+                                  (parametro).imagem, \
+                                  (Rectangle) {0, 0, DIMENSAO, DIMENSAO}, \
+                                  (parametro).coordenada, \
+                                  WHITE);
+                    
 
 
 void mapa_especial(MAPA *mapa){//mapa vai ser global
@@ -41,75 +53,89 @@ int mapa_conseguiu(MAPA mapa){
     }
 }
 
-void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca, int level){ //desenha os mapas
+void mapa_declararpng(Quadrado **imagens){
+
+    (*imagens)[0].imagem = LoadTexture("assets/mapa/adicionado mapa/crate_12.png");//box
+    (*imagens)[1].imagem = LoadTexture("assets/Individual Sprite/Crouch/Warrior_Crouch_1.png");//p
+    (*imagens)[2].imagem = LoadTexture("assets/Individual Sprite/Dash/Warrior_Dash_1_inv.png");//pa
+    (*imagens)[3].imagem = LoadTexture("assets/Individual Sprite/Dash/Warrior_Dash_1.png");//pd
+    (*imagens)[4].imagem = LoadTexture("assets/Individual Sprite/WallSlide_NoDust/Warrior_WallSlide_1.png");//ps
+    (*imagens)[5].imagem = LoadTexture("assets/Individual Sprite/Ladder-Grab/Warrior-Ladder-Grab_4.png");//pw
+}
+
+void mapa_fundo(Quadrado **fundo){
 
     char endereco[50];
-    sprintf(endereco, "assets/mapa/mapa%d.png", level);
-    peca.imagem = LoadTexture(endereco);
 
-    peca.coordenada= (Vector2){0, 0};
-    DrawTextureRec(  peca.imagem, 
+    for(int level=1; level<=13; level++){
+        sprintf(endereco, "assets/mapa/mapa%d.png", level);
+        (*fundo)[level-1].imagem = LoadTexture(endereco);
+    }
+
+}
+
+void mapa_desenhando(int gFlag, MAPA mapa, Quadrado *imagens, Quadrado *fundo, int level){ //desenha os mapas
+//peca eh o background
+    //Quadrado box, p, pa, pd, ps, pw; Quadrado fundo
+
+    (fundo[level-1]).coordenada= (Vector2){0, 0};
+    DrawTextureRec(  (fundo[level-1]).imagem, 
                     (Rectangle) {0, 0, LARGURA, LARGURA}, 
-                    peca.coordenada, 
+                    (fundo[level-1]).coordenada, 
                     WHITE);
+                    
                     
     for(int j=0; j<QTD_QUADRADOS; j++){
                 for(int k=0; k<QTD_QUADRADOS; k++){
                     
                     if(mapa.mapa[j][k]=='P'){
                     
-                    if(gFlag==0){peca.imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_1.png");}
-                    else if(gFlag==1){peca.imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_7.png");}
-                    else if(gFlag==2){peca.imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_6.png");}
-                    else if(gFlag==3){peca.imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_2.png");}
-                    else if(gFlag==4){peca.imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_4.png");}
-                    
-                    peca.coordenada.x = k*DIMENSAO;
-                    peca.coordenada.y = j*DIMENSAO;
-                    
-                    DrawTextureRec(
-                            peca.imagem, 
-                            (Rectangle) {0, 0, DIMENSAO, DIMENSAO}, 
-                            peca.coordenada, 
-                            WHITE);
+                    if(gFlag==0){
+                        PINTAR(imagens[1]);
+                    }
+                    else if(gFlag==1){
+                        PINTAR(imagens[2]);
+                    }
+                    else if(gFlag==2){
+                        PINTAR(imagens[3]);
+                    }
+                    else if(gFlag==3){
+                        PINTAR(imagens[4]);
+                    }
+                    else if(gFlag==4){
+                        PINTAR(imagens[5]);
                     }
                     
-                    /* if(mapa.especial_atual[j][k]==1 && (mapa.mapa[j][k]=='@'||mapa.mapa[j][k]=='+')){
-                                
-                     peca.imagem = LoadTexture("assets/mapa/adicionado mapa/environment_06.png");
-                
-                    peca.coordenada = (Vector2) {
-                        k*(DIMENSAO),
-                        j*(DIMENSAO)
-                    };
-                    
-                    DrawTextureRec(
-                            peca.imagem, 
-                            (Rectangle) {0, 0, DIMENSAO, DIMENSAO}, 
-                            peca.coordenada, 
-                            WHITE);
-                    }  */
-                    
+                    }
                     
                     if(mapa.mapa[j][k]=='B'){ //box
-                    peca.imagem = LoadTexture("assets/mapa/adicionado mapa/crate_12.png");
                     
-                    peca.coordenada = (Vector2) {
+                    (imagens[0]).coordenada = (Vector2) {
                         k*(DIMENSAO)+3,
                         j*(DIMENSAO)+3
                     };
                     
                     DrawTextureRec(
-                            peca.imagem, 
+                            (imagens[0]).imagem, 
                             (Rectangle) {0, 0, DIMENSAO-7, DIMENSAO-7}, 
-                            peca.coordenada, 
+                            (imagens[0]).coordenada, 
                     WHITE);
+                    
                     }
 
                 }
                 
     }
 
+}
+
+void mapa_Unload(Quadrado **imagens, Quadrado **fundo){
+    for(int i=0; i<6; i++){
+        UnloadTexture((*imagens)[i].imagem);
+    }
+    for(int i=0; i<13; i++){
+        UnloadTexture((*fundo)[i].imagem);
+    }
 }
 
 MAPA mapa_rezetar(int level){
@@ -128,6 +154,8 @@ MAPA mapa_rezetar(int level){
             fread(mapinha.mapa, sizeof(char), 12*13, arquivo);
 
             mapa_especial(&mapinha);
+
+            fclose(arquivo);
             
             return mapinha;
 }

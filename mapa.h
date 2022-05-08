@@ -19,7 +19,10 @@ typedef struct{
 
 void mapa_especial(MAPA *mapa);
 int mapa_conseguiu(MAPA mapa);
-void mapa_desenhando(int gFlag, MAPA mapa, Quadrado peca, int level);
+void mapa_desenhando(int gFlag, MAPA mapa, Quadrado *imagens, Quadrado *fundo, int level);
+void mapa_declararpng(Quadrado **imagens);
+void mapa_fundo(Quadrado **fundo);
+void mapa_Unload(Quadrado **imagens, Quadrado **fundo);
 MAPA mapa_rezetar(int level);
 
 

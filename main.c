@@ -2,6 +2,7 @@
 #include "mapa.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "movimentos.h"
 #include "voltajogada.h"
 
@@ -22,31 +23,40 @@
 int gX, gY;
 
 MAPA mapa;
-Quadrado peca;
 
 
 int main(void)
 {
-    char endereco[50];
     FILE *arquivo;
     Music jogando;
     int flag=0;
     int level=1;
 
-    sprintf(endereco, "mapastxt/mapa%d.txt", level);
+    Quadrado *imagens;
+    imagens = (Quadrado *)calloc(6, sizeof(Quadrado));
 
-    arquivo = fopen(endereco, "rt");
+    Quadrado *fundo;
+    fundo = (Quadrado *)calloc(13, sizeof(Quadrado));
+
 
     InitWindow(LARGURA, LARGURA, "Gasparzinho");
     InitAudioDevice();
     SetTargetFPS(60);
     //mapa_criando1(&mapa);
+    
+    char endereco[50];
+    sprintf(endereco, "mapastxt/mapa%d.txt", level);
+    arquivo = fopen(endereco, "rt");
     fread(mapa.mapa, sizeof(char), 12*13, arquivo);
     mapa_especial(&mapa);
+    POSICAO;
+
+    mapa_declararpng(&imagens);
+    mapa_fundo(&fundo);
     
     jogando = LoadMusicStream("assets/musica/terror.wav");
     PlayMusicStream(jogando);
-    POSICAO;
+
     int voltando=0;
     while (!WindowShouldClose()) {
        
@@ -150,7 +160,8 @@ int main(void)
         BeginDrawing();
             ClearBackground(BLACK);
             
-        mapa_desenhando(flag, mapa, peca, level);
+        mapa_desenhando(flag, mapa, imagens, fundo, level);
+
         UpdateMusicStream(jogando);
         SetMusicVolume(jogando, 0.08);
         
@@ -167,12 +178,10 @@ int main(void)
             level++;
 
             sprintf(endereco, "mapastxt/mapa%d.txt", level);
-
             arquivo = fopen(endereco, "rt");
-
             fread(mapa.mapa, sizeof(char), 12*13, arquivo);
-
             mapa_especial(&mapa);
+
 
             StopMusicStream(jogando);
 
@@ -184,10 +193,12 @@ int main(void)
     }
     apagar_jogadas(level);
     UnloadMusicStream(jogando);
-    UnloadTexture(peca.imagem);
+    mapa_Unload(&imagens, &fundo);
     CloseWindow();
 
     fclose(arquivo);
+    free(imagens);
+    free(fundo);
 
     return 0;
 }
