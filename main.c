@@ -255,79 +255,77 @@ int main(void)
         switch(currentScreen){
             case TITLE: //TELA DO TITULO DO GAME
             {
-                DrawTexture(background, LARGURA, LARGURA, WHITE); 
-                DrawText("SOKOBAN", 220, 125, 36, BLACK);
-                DrawText("GASPARZINHO", 116, 170, 50, BLACK);               
+                DrawText("SOKOBAN", 220, 125, 36, WHITE);
+                DrawText("GASPARZINHO", 116, 170, 50, WHITE);               
                 DrawRectangle(170, 310, 260, 40, LIGHTGRAY);
                 DrawText("JOGAR [ENTER]", 226, 322, 20, BLACK);
                 DrawRectangle(170, 370, 260, 40, LIGHTGRAY);
                 DrawText("INSTRUÇÕES [I]", 224, 382, 20, BLACK);
                 DrawRectangle(170, 430, 260, 40, LIGHTGRAY);
                 DrawText("CRÉDITOS [C]", 235, 442, 20, BLACK);
-                DrawText("Para sair do jogo pressione ESC", 183, 550, 15, BLACK);
+                DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
 
             case MENU: //MECANICAS DA TELA DE MENU
             {
-                DrawTexture(background, 0, 0, WHITE);
-                DrawText("JOGO PAUSADO", 126, 140, 45, BLACK);
+                DrawText("JOGO PAUSADO", 120, 140, 45, WHITE);
                 DrawRectangle(170, 310, 260, 40, LIGHTGRAY);
                 DrawText("CONTINUAR [ENTER]", 196, 322, 20, BLACK);
                 DrawRectangle(170, 370, 260, 40, LIGHTGRAY);
                 DrawText("INSTRUÇÕES [I]", 224, 382, 20, BLACK);
                 DrawRectangle(170, 430, 260, 40, LIGHTGRAY);
                 DrawText("MENU PRINCIPAL [Q]", 197, 442, 20, BLACK);
-                DrawText("Para sair do jogo pressione ESC", 183, 550, 15, BLACK);
+                DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
 
             case MANUAL1: //MECANICAS DA TELA DE MENU
             {
                 DrawRectangle(190, 90, 220, 40, LIGHTGRAY);
                 DrawText("COMO JOGAR:", 222, 100, 25, BLACK);
-                DrawText("[W] - CIMA", 248, 160, 20, BLACK);
-                DrawText("[A] - ESQUERDA", 225, 195, 20, BLACK);
-                DrawText("[S] - BAIXO", 245, 230, 20, BLACK);
-                DrawText("[D] - DIREITA", 230, 265, 20, BLACK);
-                DrawText("[M] - MENU", 246, 300, 20, BLACK);
-                DrawText("[Z] - VOLTAR JOGADA", 190, 335, 20, BLACK);
-                DrawText("[C] - DESFAZER VOLTA DE JOGADA", 100, 370, 20, BLACK);
-                DrawText("[X] - RESETAR NÍVEL", 195, 405, 20, BLACK);
-                DrawText("VOLTAR [Q]", 245, 500, 20, BLACK);
-                DrawText("Para sair do jogo pressione ESC", 183, 550, 15, BLACK);
+                DrawText("[W] - CIMA", 248, 160, 20, WHITE);
+                DrawText("[A] - ESQUERDA", 225, 195, 20, WHITE);
+                DrawText("[S] - BAIXO", 245, 230, 20, WHITE);
+                DrawText("[D] - DIREITA", 230, 265, 20, WHITE);
+                DrawText("[M] - MENU", 246, 300, 20, WHITE);
+                DrawText("[Z] - VOLTAR JOGADA", 190, 335, 20, WHITE);
+                DrawText("[C] - DESFAZER VOLTA DE JOGADA", 115, 370, 20, WHITE);
+                DrawText("[X] - RESETAR NÍVEL", 195, 405, 20, WHITE);
+                DrawText("VOLTAR [Q]", 245, 500, 20, WHITE);
+                DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
             
             case MANUAL2: //MECANICAS DA TELA DE MENU
             {
                 DrawRectangle(190, 90, 220, 40, LIGHTGRAY);
                 DrawText("COMO JOGAR:", 222, 100, 25, BLACK);
-                DrawText("[W] - CIMA", 248, 160, 20, BLACK);
-                DrawText("[A] - ESQUERDA", 225, 195, 20, BLACK);
-                DrawText("[S] - BAIXO", 245, 230, 20, BLACK);
-                DrawText("[D] - DIREITA", 230, 265, 20, BLACK);
-                DrawText("[M] - MENU", 246, 300, 20, BLACK);
-                DrawText("[Z] - VOLTAR JOGADA", 190, 335, 20, BLACK);
-                DrawText("[C] - DESFAZER VOLTA DE JOGADA", 100, 370, 20, BLACK);
-                DrawText("[X] - RESETAR NÍVEL", 195, 405, 20, BLACK);
-                DrawText("VOLTAR [Q]", 245, 500, 20, BLACK);
-                DrawText("Para sair do jogo pressione ESC", 183, 550, 15, BLACK);
+                DrawText("[W] - CIMA", 248, 160, 20, WHITE);
+                DrawText("[A] - ESQUERDA", 225, 195, 20, WHITE);
+                DrawText("[S] - BAIXO", 245, 230, 20, WHITE);
+                DrawText("[D] - DIREITA", 230, 265, 20, WHITE);
+                DrawText("[M] - MENU", 246, 300, 20, WHITE);
+                DrawText("[Z] - VOLTAR JOGADA", 190, 335, 20, WHITE);
+                DrawText("[C] - DESFAZER VOLTA DE JOGADA", 115, 370, 20, WHITE);
+                DrawText("[X] - RESETAR NÍVEL", 195, 405, 20, WHITE);
+                DrawText("VOLTAR [Q]", 245, 500, 20, WHITE);
+                DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
 
             case CREDITO: //MECANICAS DA TELA DE CREDITOS
             {
                 DrawRectangle(190, 90, 220, 40, LIGHTGRAY);
                 DrawText("CRÉDITOS", 237, 100, 25, BLACK);
-                DrawText("AUGUSTO NASCIMENTO", 178, 180, 20, BLACK);
-                DrawText("[ano@cin.ufpe.br]", 218, 200, 20, BLACK);
-                DrawText("EDENN WESLLEY", 215, 240, 20, BLACK);
-                DrawText("[ewss@cin.ufpe.br]", 212, 260, 20, BLACK);
-                DrawText("ENIO HENRIQUE", 220, 300, 20, BLACK);
-                DrawText("[ehnr@cin.ufpe.br]", 212, 320, 20, BLACK);
-                DrawText("GABRIEL WANDERLEY", 192, 360, 20, BLACK);
-                DrawText("[gwcs@cin.ufpe.br]", 214, 380, 20, BLACK);
-                DrawText("MARIA LETICIA", 223, 420, 20, BLACK);
-                DrawText("[mlng@cin.ufpe.br]", 216, 440, 20, BLACK);
-                DrawText("VOLTAR [Q]", 245, 500, 20, BLACK);
-                DrawText("Para sair do jogo pressione ESC", 183, 550, 15, BLACK);
+                DrawText("AUGUSTO NASCIMENTO", 178, 180, 20, WHITE);
+                DrawText("[ano@cin.ufpe.br]", 218, 200, 20, WHITE);
+                DrawText("EDENN WESLLEY", 215, 240, 20, WHITE);
+                DrawText("[ewss@cin.ufpe.br]", 212, 260, 20, WHITE);
+                DrawText("ENIO HENRIQUE", 220, 300, 20, WHITE);
+                DrawText("[ehnr@cin.ufpe.br]", 212, 320, 20, WHITE);
+                DrawText("GABRIEL WANDERLEY", 192, 360, 20, WHITE);
+                DrawText("[gwcs@cin.ufpe.br]", 214, 380, 20, WHITE);
+                DrawText("MARIA LETICIA", 223, 420, 20, WHITE);
+                DrawText("[mlng@cin.ufpe.br]", 216, 440, 20, WHITE);
+                DrawText("VOLTAR [Q]", 245, 500, 20, WHITE);
+                DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
 
             case GAMEPLAY: //MECANICAS DA TELA DE GAMEPLAY
