@@ -244,6 +244,7 @@ int main(void)
             case MENU: //MECANICAS DA TELA DE MENU
             {
                 DrawTexture(background, 0, 0, WHITE);
+                DrawText("JOGO PAUSADO", 126, 140, 45, BLACK);
                 DrawRectangle(170, 310, 260, 40, LIGHTGRAY);
                 DrawText("CONTINUAR [ENTER]", 196, 322, 20, BLACK);
                 DrawRectangle(170, 370, 260, 40, LIGHTGRAY);
