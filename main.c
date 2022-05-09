@@ -43,7 +43,7 @@ int main(void)
     InitWindow(LARGURA, LARGURA, "Gasparzinho");
     GameScreen currentScreen = TITLE;
 
-    Texture2D background = LoadTexture("assets/foto.jpg");
+    Texture2D background = LoadTexture("assets/fundo.png");
     
     InitAudioDevice();
     SetTargetFPS(60);
@@ -70,6 +70,11 @@ int main(void)
         switch(currentScreen){
             case TITLE: //MECANICAS DA TELA DO TITULO DO GAME
             {
+                DrawTextureRec(background,
+                                (Rectangle){0,0, 600, 600},
+                                (Vector2){0, 0},
+                                WHITE);
+
                 if (IsKeyPressed(KEY_ENTER))
                 {
                     currentScreen = GAMEPLAY;
@@ -86,6 +91,11 @@ int main(void)
             } break;
             case MENU: //MECANICAS DA TELA DE MENU
             {
+                DrawTextureRec(background,
+                                (Rectangle){0,0, 600, 600},
+                                (Vector2){0, 0},
+                                WHITE);
+
                 if (IsKeyPressed(KEY_ENTER))
                 {
                     currentScreen = GAMEPLAY;
@@ -102,18 +112,33 @@ int main(void)
             } break;
             case MANUAL1: //MECANICAS DA TELA DE INSTRUCOES NO INICIO
             {
+                DrawTextureRec(background,
+                                (Rectangle){0,0, 600, 600},
+                                (Vector2){0, 0},
+                                WHITE);
+
                 if(IsKeyPressed(KEY_Q)){
                     currentScreen = TITLE;
                 }
             } break;
             case MANUAL2: //MECANICAS DA TELA DE INSTRUCOES NO JOGO
             {
+                DrawTextureRec(background,
+                                (Rectangle){0,0, 600, 600},
+                                (Vector2){0, 0},
+                                WHITE);
+
                 if(IsKeyPressed(KEY_Q)){
                     currentScreen = MENU;
                 }
             } break;
             case CREDITO:
             {
+                DrawTextureRec(background,
+                                (Rectangle){0,0, 600, 600},
+                                (Vector2){0, 0},
+                                WHITE);
+
                 if(IsKeyPressed(KEY_Q)){
                     currentScreen = TITLE;
                 }
@@ -218,7 +243,8 @@ int main(void)
                     PlayMusicStream(jogando);
                 }
                             
-                    } break;
+            } break;
+            
             default:
                 break;
         }
@@ -264,9 +290,8 @@ int main(void)
                 DrawText("[D] - DIREITA", 230, 265, 20, BLACK);
                 DrawText("[M] - MENU", 246, 300, 20, BLACK);
                 DrawText("[Z] - VOLTAR JOGADA", 190, 335, 20, BLACK);
-                DrawText("[P] - PRÓXIMO NÍVEL", 197, 370, 20, BLACK);
+                DrawText("[C] - DESFAZER VOLTA DE JOGADA", 100, 370, 20, BLACK);
                 DrawText("[X] - RESETAR NÍVEL", 195, 405, 20, BLACK);
-                DrawText("[C] - DESFAZER VOLTAR JOGADA", 130, 440, 20, BLACK);
                 DrawText("VOLTAR [Q]", 245, 500, 20, BLACK);
                 DrawText("Para sair do jogo pressione ESC", 183, 550, 15, BLACK);
             } break;
@@ -281,9 +306,8 @@ int main(void)
                 DrawText("[D] - DIREITA", 230, 265, 20, BLACK);
                 DrawText("[M] - MENU", 246, 300, 20, BLACK);
                 DrawText("[Z] - VOLTAR JOGADA", 190, 335, 20, BLACK);
-                DrawText("[P] - PRÓXIMO NÍVEL", 197, 370, 20, BLACK);
+                DrawText("[C] - DESFAZER VOLTA DE JOGADA", 100, 370, 20, BLACK);
                 DrawText("[X] - RESETAR NÍVEL", 195, 405, 20, BLACK);
-                DrawText("[C] - DESFAZER VOLTAR JOGADA", 130, 440, 20, BLACK);
                 DrawText("VOLTAR [Q]", 245, 500, 20, BLACK);
                 DrawText("Para sair do jogo pressione ESC", 183, 550, 15, BLACK);
             } break;
