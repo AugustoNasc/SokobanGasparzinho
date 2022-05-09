@@ -42,7 +42,7 @@ int main(void)
 
 
     InitWindow(LARGURA, LARGURA, "Gasparzinho");
-    GameScreen currentScreen = PARABENS;
+    GameScreen currentScreen = TITLE;
 
     Vector2 posicaoMouse={0,0};
     Rectangle mouse = {posicaoMouse.x, posicaoMouse.y, 20, 20};
