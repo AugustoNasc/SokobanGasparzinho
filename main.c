@@ -22,7 +22,7 @@
 
 int gX, gY;
 
-typedef enum GameScreen { TITLE = 0, MENU, MANUAL1, MANUAL2, ESCOLHER_NIVEL, CREDITO, GAMEPLAY } GameScreen;
+typedef enum GameScreen { TITLE = 0, MENU, MANUAL1, MANUAL2, ESCOLHER_NIVEL, CREDITO, GAMEPLAY, PARABENS } GameScreen;
 
 MAPA mapa;
 
@@ -42,7 +42,7 @@ int main(void)
 
 
     InitWindow(LARGURA, LARGURA, "Gasparzinho");
-    GameScreen currentScreen = TITLE;
+    GameScreen currentScreen = PARABENS;
 
     Vector2 posicaoMouse={0,0};
     Rectangle mouse = {posicaoMouse.x, posicaoMouse.y, 20, 20};
@@ -314,17 +314,9 @@ int main(void)
                             }
                     }
 
-                posicaoMouse.x=GetMouseX();
-                posicaoMouse.y=GetMouseY();
+                Rectangle botaoNivel2 = {400, 550, 200, 50};
 
-                double p = GetScreenWidth()/(double)600;
-                SetMouseScale((1/p), (1/p));
-                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 15, 15};
-
-                Rectangle botaoNivel = {410, 550, 180, 40};
-                
-
-                    if(CheckCollisionRecs(botaoNivel, mouse)){
+                    if(CheckCollisionRecs(botaoNivel2, mouse)){
 
                         //DrawRectangle(190, 490, 220, 70, BLACK);
 
@@ -458,7 +450,51 @@ int main(void)
                 }
                             
             } break;
-            
+            case PARABENS:
+            {
+                DrawTextureRec(background,
+                                (Rectangle){0,0, 600, 600},
+                                (Vector2){0, 0},
+                                WHITE);
+
+                posicaoMouse.x=GetMouseX();
+                posicaoMouse.y=GetMouseY();
+
+                double p = GetScreenWidth()/(double)600;
+                SetMouseScale((1/p), (1/p));
+                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 15, 15};
+
+                Rectangle botaoNivel[2];
+                
+                for(int i=0; i<2; i++){
+                    botaoNivel[i].x=200;
+                    botaoNivel[i].y=322+60*i;
+                    botaoNivel[i].width=200;
+                    botaoNivel[i].height=60;                  
+                }
+                for(int i=0; i<2; i++){
+
+                    if(CheckCollisionRecs(botaoNivel[i], mouse)){
+
+                        //DrawRectangle(160, 300+60*i, 280, 60, BLACK);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                if(i==0)
+                                currentScreen = GAMEPLAY;
+                                if(i==1)
+                                currentScreen = TITLE;
+                            }
+                    }
+
+                }
+
+                if(IsKeyPressed(KEY_ENTER)){
+                    currentScreen = GAMEPLAY;
+                }
+                if (IsKeyPressed(KEY_Q)){
+                    currentScreen = TITLE;
+                }
+            }break;
             default:
                 break;
         }
@@ -572,6 +608,16 @@ int main(void)
                 DrawRectangle(460, 560, 130, 30, LIGHTGRAY);
                 DrawText("[M] - PAUSA", 475, 568, 18, BLACK);
             } break;
+            case PARABENS:
+            {
+                DrawText("PARABUEINS!!", 120, 170, 55, WHITE);
+                DrawText("VOCÊ CONSEGUIU!", 190, 130, 25, WHITE);
+                DrawRectangle(173, 300, 260, 40, LIGHTGRAY);
+                DrawText("CONTINUAR [ENTER]", 198, 312, 20, BLACK);
+                DrawRectangle(172, 360, 260, 40, LIGHTGRAY);
+                DrawText("MENU PRINCIPAL [Q]", 202, 372, 20, BLACK);
+                DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
+            }break;
             default:
                 break;
         }
@@ -585,6 +631,7 @@ int main(void)
 
         if(mapa_conseguiu(mapa)){
             
+            currentScreen = PARABENS;
             apagar_jogadas(level);
 
             if(level!=13){
