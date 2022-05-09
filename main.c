@@ -22,7 +22,7 @@
 
 int gX, gY;
 
-typedef enum GameScreen { TITLE = 0, MENU, MANUAL1, MANUAL2, ESCOLHER_NIVEL, CREDITO, GAMEPLAY } GameScreen;
+typedef enum GameScreen { TITLE = 0, MENU, MANUAL1, MANUAL2, ESCOLHER_NIVEL, CREDITO, GAMEPLAY, PARABENS } GameScreen;
 
 MAPA mapa;
 
@@ -91,15 +91,15 @@ int main(void)
                 
                 for(int i=0; i<4; i++){
                     botaoNivel[i].x=200;
-                    botaoNivel[i].y=322+60*i;
+                    botaoNivel[i].y=300+60*i;
                     botaoNivel[i].width=200;
-                    botaoNivel[i].height=60;                  
+                    botaoNivel[i].height=50;                  
                 }
                 for(int i=0; i<4; i++){
 
                     if(CheckCollisionRecs(botaoNivel[i], mouse)){
 
-                        DrawRectangle(50, 310+60*i, 500, 50, BLACK);
+                        //DrawRectangle(50, 310+60*i, 500, 50, BLACK);
 
                             if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
                                 if(i==0)
@@ -160,7 +160,7 @@ int main(void)
 
                     if(CheckCollisionRecs(botaoNivel[i], mouse)){
 
-                        DrawRectangle(160, 300+60*i, 280, 60, BLACK);
+                        //DrawRectangle(160, 300+60*i, 280, 60, BLACK);
 
                             if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
                                 if(i==0)
@@ -207,7 +207,7 @@ int main(void)
 
                     if(CheckCollisionRecs(botaoNivel, mouse)){
 
-                        DrawRectangle(190, 490, 220, 70, BLACK);
+                        //DrawRectangle(190, 490, 220, 70, BLACK);
 
                             if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
                                 currentScreen = TITLE;
@@ -238,7 +238,7 @@ int main(void)
 
                     if(CheckCollisionRecs(botaoNivel, mouse)){
 
-                        DrawRectangle(190, 490, 220, 70, BLACK);
+                        //DrawRectangle(190, 490, 220, 70, BLACK);
 
                             if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
                                 currentScreen = MENU;
@@ -268,7 +268,7 @@ int main(void)
 
                     if(CheckCollisionRecs(botaoNivel, mouse)){
 
-                        DrawRectangle(190, 490, 220, 70, BLACK);
+                        //DrawRectangle(190, 490, 220, 70, BLACK);
 
                             if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
                                 currentScreen = TITLE;
@@ -297,18 +297,18 @@ int main(void)
                 Rectangle botaoNivel[maximo];
                 
                 for(int i=1; i<=maximo; i++){
-                    botaoNivel[i-1].x=300;
-                    botaoNivel[i-1].y=100+40*i;
-                    botaoNivel[i-1].width=40;
-                    botaoNivel[i-1].height=40;                  
+                    botaoNivel[i-1].x=280;
+                    botaoNivel[i-1].y=80+35*i;
+                    botaoNivel[i-1].width=50;
+                    botaoNivel[i-1].height=20;                  
                 }
                 for(int i=1; i<=maximo; i++){
 
                     if(CheckCollisionRecs(botaoNivel[i-1], mouse)){
-                        DrawRectangle(280, 100+40*i, 60, 25, BLACK);
+                        //DrawRectangle(280, 80+30*i, 50, 30, LIGHTGRAY);
 
                         sprintf(endereco, "%d", i);
-                        DrawText(endereco, 300, 100+40*i, 20, WHITE);
+                        //DrawText(endereco, 300, 90+40*i, 20, BLACK);
 
                             if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
                                 level=i;
@@ -316,8 +316,21 @@ int main(void)
                             }
                     }
 
+                Rectangle botaoNivel2 = {400, 550, 200, 50};
+
+                    if(CheckCollisionRecs(botaoNivel2, mouse)){
+
+                        //DrawRectangle(190, 490, 220, 70, BLACK);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                currentScreen = TITLE;
+                            }
+                    }
                 }
-                
+                if (IsKeyPressed(KEY_Q))
+                {
+                    currentScreen = TITLE;
+                }
 
             }break;
 
@@ -439,7 +452,51 @@ int main(void)
                 }
                             
             } break;
-            
+            case PARABENS:
+            {
+                DrawTextureRec(background,
+                                (Rectangle){0,0, 600, 600},
+                                (Vector2){0, 0},
+                                WHITE);
+
+                posicaoMouse.x=GetMouseX();
+                posicaoMouse.y=GetMouseY();
+
+                double p = GetScreenWidth()/(double)600;
+                SetMouseScale((1/p), (1/p));
+                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 15, 15};
+
+                Rectangle botaoNivel[2];
+                
+                for(int i=0; i<2; i++){
+                    botaoNivel[i].x=200;
+                    botaoNivel[i].y=322+60*i;
+                    botaoNivel[i].width=200;
+                    botaoNivel[i].height=60;                  
+                }
+                for(int i=0; i<2; i++){
+
+                    if(CheckCollisionRecs(botaoNivel[i], mouse)){
+
+                        //DrawRectangle(160, 300+60*i, 280, 60, BLACK);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                if(i==0)
+                                currentScreen = GAMEPLAY;
+                                if(i==1)
+                                currentScreen = TITLE;
+                            }
+                    }
+
+                }
+
+                if(IsKeyPressed(KEY_ENTER)){
+                    currentScreen = GAMEPLAY;
+                }
+                if (IsKeyPressed(KEY_Q)){
+                    currentScreen = TITLE;
+                }
+            }break;
             default:
                 break;
         }
@@ -456,14 +513,14 @@ int main(void)
 
                 DrawText("SOKOBAN", 220, 125, 36, WHITE);
                 DrawText("GASPARZINHO", 116, 170, 50, WHITE);               
-                DrawRectangle(170, 310, 260, 40, LIGHTGRAY);
-                DrawText("JOGAR [ENTER]", 226, 322, 20, BLACK);
-                DrawRectangle(170, 370, 260, 40, LIGHTGRAY);
-                DrawText("INSTRUÇÕES [I]", 224, 382, 20, BLACK);
-                DrawRectangle(170, 430, 260, 40, LIGHTGRAY);
-                DrawText("CRÉDITOS [C]", 235, 442, 20, BLACK);
-                DrawRectangle(110, 490, 390, 40, LIGHTGRAY);
-                DrawText("ESCOLHER NÍVEIS JÁ JOGADOS [H]", 120, 500, 20, BLACK);
+                DrawRectangle(170, 300, 260, 40, LIGHTGRAY);
+                DrawText("JOGAR [ENTER]", 226, 312, 20, BLACK);
+                DrawRectangle(170, 360, 260, 40, LIGHTGRAY);
+                DrawText("INSTRUÇÕES [I]", 224, 372, 20, BLACK);
+                DrawRectangle(170, 420, 260, 40, LIGHTGRAY);
+                DrawText("CRÉDITOS [C]", 235, 432, 20, BLACK);
+                DrawRectangle(170, 480, 260, 40, LIGHTGRAY);
+                DrawText("ESCOLHER NÍVEL [H]", 195, 492, 20, BLACK);
                 DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
 
@@ -499,7 +556,8 @@ int main(void)
                 DrawText("[Z] - VOLTAR JOGADA", 190, 335, 20, WHITE);
                 DrawText("[C] - DESFAZER VOLTA DE JOGADA", 115, 370, 20, WHITE);
                 DrawText("[X] - RESETAR NÍVEL", 195, 405, 20, WHITE);
-                DrawText("VOLTAR [Q]", 245, 500, 20, WHITE);
+                DrawRectangle(205, 492, 190, 35, LIGHTGRAY);
+                DrawText("VOLTAR [Q]", 245, 500, 20, BLACK);
                 DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
             
@@ -519,7 +577,8 @@ int main(void)
                 DrawText("[Z] - VOLTAR JOGADA", 190, 335, 20, WHITE);
                 DrawText("[C] - DESFAZER VOLTA DE JOGADA", 115, 370, 20, WHITE);
                 DrawText("[X] - RESETAR NÍVEL", 195, 405, 20, WHITE);
-                DrawText("VOLTAR [Q]", 245, 500, 20, WHITE);
+                DrawRectangle(205, 492, 190, 35, LIGHTGRAY);
+                DrawText("VOLTAR [Q]", 245, 500, 20, BLACK);
                 DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
 
@@ -541,7 +600,8 @@ int main(void)
                 DrawText("[gwcs@cin.ufpe.br]", 214, 380, 20, WHITE);
                 DrawText("MARIA LETICIA", 223, 420, 20, WHITE);
                 DrawText("[mlng@cin.ufpe.br]", 216, 440, 20, WHITE);
-                DrawText("VOLTAR [Q]", 245, 500, 20, WHITE);
+                DrawRectangle(205, 492, 190, 35, LIGHTGRAY);
+                DrawText("VOLTAR [Q]", 245, 500, 20, BLACK);
                 DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
 
@@ -556,9 +616,11 @@ int main(void)
                 for(int i=1; i<13; i++){
                     if(maximo>=i){
                         sprintf(endereco, "%d", i);
-                        DrawText(endereco, 300, 100+40*i, 20, WHITE);
+                        DrawText(endereco, 305, 80+35*i, 20, WHITE);
                     }
-                }
+                } 
+                DrawRectangle(420, 550, 170, 35, LIGHTGRAY);
+                DrawText("VOLTAR [Q]", 450, 559, 20, BLACK);
 
             }break;
 
@@ -570,9 +632,19 @@ int main(void)
                 SetMusicVolume(jogando, 0.08);
 
                 //TEXTO DE TESTE GAMEPLAY
-                DrawRectangle(460, 560, 130, 30, WHITE);
+                DrawRectangle(460, 560, 130, 30, LIGHTGRAY);
                 DrawText("[M] - PAUSA", 475, 568, 18, BLACK);
             } break;
+            case PARABENS:
+            {
+                DrawText("PARABUEINS!!", 120, 170, 55, WHITE);
+                DrawText("VOCÊ CONSEGUIU!", 190, 130, 25, WHITE);
+                DrawRectangle(173, 300, 260, 40, LIGHTGRAY);
+                DrawText("CONTINUAR [ENTER]", 198, 312, 20, BLACK);
+                DrawRectangle(172, 360, 260, 40, LIGHTGRAY);
+                DrawText("MENU PRINCIPAL [Q]", 202, 372, 20, BLACK);
+                DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
+            }break;
             default:
                 break;
         }
@@ -586,6 +658,7 @@ int main(void)
 
         if(mapa_conseguiu(mapa)){
             
+            currentScreen = PARABENS;
             apagar_jogadas(level);
 
             if(level!=13){
