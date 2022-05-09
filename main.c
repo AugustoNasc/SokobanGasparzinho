@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "movimentos.h"
 #include "voltajogada.h"
+#include "guarda_nivel.h"
 
 #define QTD_QUADRADOS 12 
 #define LARGURA 600
@@ -21,7 +22,7 @@
 
 int gX, gY;
 
-typedef enum GameScreen { TITLE = 0, MENU, MANUAL1, MANUAL2, CREDITO, GAMEPLAY } GameScreen;
+typedef enum GameScreen { TITLE = 0, MENU, MANUAL1, MANUAL2, ESCOLHER_NIVEL, CREDITO, GAMEPLAY } GameScreen;
 
 MAPA mapa;
 
@@ -31,7 +32,7 @@ int main(void)
     Music jogando;
     Sound conseguiu;
     int flag=0;
-    int level=1;
+    int level=1, maximo=1;
 
     Quadrado *imagens;
     imagens = (Quadrado *)calloc(6, sizeof(Quadrado));
@@ -42,6 +43,9 @@ int main(void)
 
     InitWindow(LARGURA, LARGURA, "Gasparzinho");
     GameScreen currentScreen = TITLE;
+
+    Vector2 posicaoMouse={0,0};
+    Rectangle mouse = {posicaoMouse.x, posicaoMouse.y, 20, 20};
 
     Texture2D background = LoadTexture("assets/fundo.png");
     
@@ -75,6 +79,41 @@ int main(void)
                                 (Vector2){0, 0},
                                 WHITE);
 
+                posicaoMouse.x=GetMouseX();
+                posicaoMouse.y=GetMouseY();
+
+                double p = GetScreenWidth()/(double)600;
+                SetMouseScale((1/p), (1/p));
+                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 15, 15};
+
+                Rectangle botaoNivel[4];
+                
+                for(int i=0; i<4; i++){
+                    botaoNivel[i].x=200;
+                    botaoNivel[i].y=322+60*i;
+                    botaoNivel[i].width=200;
+                    botaoNivel[i].height=60;                  
+                }
+                for(int i=0; i<4; i++){
+
+                    if(CheckCollisionRecs(botaoNivel[i], mouse)){
+
+                        DrawRectangle(50, 310+60*i, 500, 50, BLACK);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                if(i==0)
+                                currentScreen = GAMEPLAY;
+                                if(i==1)
+                                currentScreen = MANUAL1;
+                                if(i==2)
+                                currentScreen = CREDITO;
+                                if(i==3)
+                                currentScreen = ESCOLHER_NIVEL;
+                            }
+                    }
+
+                }
+
                 if (IsKeyPressed(KEY_ENTER))
                 {
                     currentScreen = GAMEPLAY;
@@ -88,6 +127,10 @@ int main(void)
                 {
                     currentScreen = CREDITO;
                 }
+                if (IsKeyPressed(KEY_H))
+                {
+                    currentScreen = ESCOLHER_NIVEL;
+                }
             } break;
             case MENU: //MECANICAS DA TELA DE MENU
             {
@@ -95,6 +138,39 @@ int main(void)
                                 (Rectangle){0,0, 600, 600},
                                 (Vector2){0, 0},
                                 WHITE);
+
+                posicaoMouse.x=GetMouseX();
+                posicaoMouse.y=GetMouseY();
+
+                double p = GetScreenWidth()/(double)600;
+                SetMouseScale((1/p), (1/p));
+                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 15, 15};
+
+                Rectangle botaoNivel[3];
+                
+                for(int i=0; i<3; i++){
+                    botaoNivel[i].x=200;
+                    botaoNivel[i].y=322+60*i;
+                    botaoNivel[i].width=200;
+                    botaoNivel[i].height=60;                  
+                }
+                for(int i=0; i<3; i++){
+
+                    if(CheckCollisionRecs(botaoNivel[i], mouse)){
+
+                        DrawRectangle(160, 300+60*i, 280, 60, BLACK);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                if(i==0)
+                                currentScreen = GAMEPLAY;
+                                if(i==1)
+                                currentScreen = MANUAL2;
+                                if(i==2)
+                                currentScreen = TITLE;
+                            }
+                    }
+
+                }
 
                 if (IsKeyPressed(KEY_ENTER))
                 {
@@ -117,6 +193,26 @@ int main(void)
                                 (Vector2){0, 0},
                                 WHITE);
 
+                posicaoMouse.x=GetMouseX();
+                posicaoMouse.y=GetMouseY();
+
+                double p = GetScreenWidth()/(double)600;
+                SetMouseScale((1/p), (1/p));
+                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 15, 15};
+
+                Rectangle botaoNivel = {200, 500, 200, 60};
+                
+
+                    if(CheckCollisionRecs(botaoNivel, mouse)){
+
+                        DrawRectangle(190, 490, 220, 70, BLACK);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                currentScreen = TITLE;
+                            }
+                    }
+
+
                 if(IsKeyPressed(KEY_Q)){
                     currentScreen = TITLE;
                 }
@@ -127,6 +223,25 @@ int main(void)
                                 (Rectangle){0,0, 600, 600},
                                 (Vector2){0, 0},
                                 WHITE);
+
+                posicaoMouse.x=GetMouseX();
+                posicaoMouse.y=GetMouseY();
+
+                double p = GetScreenWidth()/(double)600;
+                SetMouseScale((1/p), (1/p));
+                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 15, 15};
+
+                Rectangle botaoNivel = {200, 500, 200, 60};
+                
+
+                    if(CheckCollisionRecs(botaoNivel, mouse)){
+
+                        DrawRectangle(190, 490, 220, 70, BLACK);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                currentScreen = MENU;
+                            }
+                    }
 
                 if(IsKeyPressed(KEY_Q)){
                     currentScreen = MENU;
@@ -139,15 +254,93 @@ int main(void)
                                 (Vector2){0, 0},
                                 WHITE);
 
+                posicaoMouse.x=GetMouseX();
+                posicaoMouse.y=GetMouseY();
+
+                double p = GetScreenWidth()/(double)600;
+                SetMouseScale((1/p), (1/p));
+                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 15, 15};
+
+                Rectangle botaoNivel = {200, 500, 200, 60};
+                
+
+                    if(CheckCollisionRecs(botaoNivel, mouse)){
+
+                        DrawRectangle(190, 490, 220, 70, BLACK);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                currentScreen = TITLE;
+                            }
+                    }
+
                 if(IsKeyPressed(KEY_Q)){
                     currentScreen = TITLE;
                 }
             } break;
+            case ESCOLHER_NIVEL:{
+
+                maximo = guarda_ler_nivel();
+
+                DrawTextureRec(background,
+                                (Rectangle){0,0, 600, 600},
+                                (Vector2){0, 0},
+                                WHITE);
+
+                posicaoMouse.x=GetMouseX();
+                posicaoMouse.y=GetMouseY();
+
+                double p = GetScreenWidth()/(double)600;
+                SetMouseScale((1/p), (1/p));
+                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 6, 6};
+                Rectangle botaoNivel[maximo];
+                
+                for(int i=1; i<=maximo; i++){
+                    botaoNivel[i-1].x=300;
+                    botaoNivel[i-1].y=100+40*i;
+                    botaoNivel[i-1].width=40;
+                    botaoNivel[i-1].height=40;                  
+                }
+                for(int i=1; i<=maximo; i++){
+
+                    if(CheckCollisionRecs(botaoNivel[i-1], mouse)){
+                        DrawRectangle(280, 100+40*i, 60, 25, BLACK);
+
+                        sprintf(endereco, "%d", i);
+                        DrawText(endereco, 300, 100+40*i, 20, WHITE);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                level=i;
+                                currentScreen = GAMEPLAY;
+                            }
+                    }
+
+                }
+                
+
+            }break;
+
             case GAMEPLAY: //MECANICAS DA TELA DE GAMEPLAY
             {
                 if(IsKeyPressed(KEY_M)){
                     currentScreen = MENU;
                 }
+                posicaoMouse.x=GetMouseX();
+                posicaoMouse.y=GetMouseY();
+
+                double p = GetScreenWidth()/(double)600;
+                SetMouseScale((1/p), (1/p));
+                mouse = (Rectangle) {(float) posicaoMouse.x, (float) posicaoMouse.y, 15, 15};
+
+                Rectangle botaoNivel = {460, 560, 130, 30};
+
+                    if(CheckCollisionRecs(botaoNivel, mouse)){
+
+                        DrawRectangle(460, 560, 140, 40, BLACK);
+
+                            if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+                                currentScreen = MENU;
+                            }
+                    }
                 // inicio jogo   
                 if(IsKeyPressed(KEY_A)){ 
                     flag=1; 
@@ -263,6 +456,8 @@ int main(void)
                 DrawText("INSTRUÇÕES [I]", 224, 382, 20, BLACK);
                 DrawRectangle(170, 430, 260, 40, LIGHTGRAY);
                 DrawText("CRÉDITOS [C]", 235, 442, 20, BLACK);
+                DrawRectangle(110, 490, 390, 40, LIGHTGRAY);
+                DrawText("ESCOLHER NÍVEIS JÁ JOGADOS [H]", 120, 500, 20, BLACK);
                 DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
 
@@ -328,6 +523,19 @@ int main(void)
                 DrawText("Para sair do jogo pressione ESC", 161, 550, 18, WHITE);
             } break;
 
+            case ESCOLHER_NIVEL:
+            {
+                DrawRectangle(160, 50, 310, 40, LIGHTGRAY);
+                DrawText("NIVEIS JA PASSADOS", 190, 60, 25, BLACK);
+                for(int i=1; i<13; i++){
+                    if(maximo>=i){
+                        sprintf(endereco, "%d", i);
+                        DrawText(endereco, 300, 100+40*i, 20, WHITE);
+                    }
+                }
+
+            }break;
+
             case GAMEPLAY: //MECANICAS DA TELA DE GAMEPLAY
             {
                 mapa_desenhando(flag, mapa, imagens, fundo, level);
@@ -350,14 +558,19 @@ int main(void)
         EndDrawing();
 
         if(mapa_conseguiu(mapa)){
-
+            
             apagar_jogadas(level);
-            level++;
 
-            sprintf(endereco, "mapastxt/mapa%d.txt", level);
-            arquivo = fopen(endereco, "rt");
-            fread(mapa.mapa, sizeof(char), 12*13, arquivo);
-            mapa_especial(&mapa);
+            if(level!=13){
+                level++;
+
+                guarda_salva_nivel(level);
+                
+                sprintf(endereco, "mapastxt/mapa%d.txt", level);
+                arquivo = fopen(endereco, "rt");
+                fread(mapa.mapa, sizeof(char), 12*13, arquivo);
+                mapa_especial(&mapa);
+            }
 
 
             StopMusicStream(jogando);
