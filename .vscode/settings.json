@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "raylib.h": "c",
+        "guarda_nivel.h": "c"
+    }
+}
