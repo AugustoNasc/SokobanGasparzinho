@@ -4,7 +4,7 @@ Projeto da disciplina de Introdução a Programação no qual consiste em criar 
 Link da biblioteca utilizada: https://www.raylib.com SokobanGasparzinho
 
 Para abrir o jogo:
-Digite no cmd git clone 
+git clone https://github.com/AugustoNasc/SokobanGasparzinho.git
 Digite no powershell (Shift + Botão Direito no diretório) mingw32-make PLATFORM=PLATFORM_DESKTOP.
 Para abrir o jogo, execute o .exe.
 
