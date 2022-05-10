@@ -29,7 +29,7 @@ MAPA mapa;
 int main(void)
 {
     FILE *arquivo;
-    Music jogando;
+    Music jogando, abertura;
     Sound conseguiu;
     int flag=0;
     int level=1, maximo=1;
@@ -52,6 +52,7 @@ int main(void)
     InitAudioDevice();
     SetTargetFPS(60);
     //mapa_criando1(&mapa);
+    abertura = LoadMusicStream("assets/musica/suspira.mp3");
     
     char endereco[50];
     sprintf(endereco, "mapastxt/mapa%d.txt", level);
@@ -131,6 +132,7 @@ int main(void)
                 {
                     currentScreen = ESCOLHER_NIVEL;
                 }
+
             } break;
             case MENU: //MECANICAS DA TELA DE MENU
             {
@@ -310,6 +312,9 @@ int main(void)
 
                             if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
                                 level=i;
+                                mapa=mapa_rezetar(level);
+                                POSICAO;
+                                mapa_especial(&mapa);
                                 currentScreen = GAMEPLAY;
                             }
                     }
@@ -505,6 +510,10 @@ int main(void)
         switch(currentScreen){
             case TITLE: //TELA DO TITULO DO GAME
             {
+                UpdateMusicStream(abertura);
+                PlayMusicStream(abertura);
+                SetMusicVolume(abertura, 0.2);
+
                 DrawText("SOKOBAN", 220, 125, 36, WHITE);
                 DrawText("GASPARZINHO", 116, 170, 50, WHITE);               
                 DrawRectangle(170, 300, 260, 40, LIGHTGRAY);
@@ -520,6 +529,10 @@ int main(void)
 
             case MENU: //MECANICAS DA TELA DE MENU
             {
+                UpdateMusicStream(abertura);
+                PlayMusicStream(abertura);
+                SetMusicVolume(abertura, 0.2);
+
                 DrawText("JOGO PAUSADO", 120, 140, 45, WHITE);
                 DrawRectangle(170, 310, 260, 40, LIGHTGRAY);
                 DrawText("CONTINUAR [ENTER]", 196, 322, 20, BLACK);
@@ -532,6 +545,10 @@ int main(void)
 
             case MANUAL1: //MECANICAS DA TELA DE MENU
             {
+                UpdateMusicStream(abertura);
+                PlayMusicStream(abertura);
+                SetMusicVolume(abertura, 0.2);
+
                 DrawRectangle(190, 90, 220, 40, LIGHTGRAY);
                 DrawText("COMO JOGAR:", 222, 100, 25, BLACK);
                 DrawText("[W] - CIMA", 248, 160, 20, WHITE);
@@ -549,6 +566,10 @@ int main(void)
             
             case MANUAL2: //MECANICAS DA TELA DE MENU
             {
+                UpdateMusicStream(abertura);
+                PlayMusicStream(abertura);
+                SetMusicVolume(abertura, 0.2);
+
                 DrawRectangle(190, 90, 220, 40, LIGHTGRAY);
                 DrawText("COMO JOGAR:", 222, 100, 25, BLACK);
                 DrawText("[W] - CIMA", 248, 160, 20, WHITE);
@@ -566,6 +587,10 @@ int main(void)
 
             case CREDITO: //MECANICAS DA TELA DE CREDITOS
             {
+                UpdateMusicStream(abertura);
+                PlayMusicStream(abertura);
+                SetMusicVolume(abertura, 0.2);
+
                 DrawRectangle(190, 90, 220, 40, LIGHTGRAY);
                 DrawText("CRÉDITOS", 237, 100, 25, BLACK);
                 DrawText("AUGUSTO NASCIMENTO", 178, 180, 20, WHITE);
@@ -585,9 +610,13 @@ int main(void)
 
             case ESCOLHER_NIVEL:
             {
-                DrawRectangle(145, 40, 320, 40, LIGHTGRAY);
-                DrawText("NIVEIS JÁ PASSADOS", 170, 50, 25, BLACK);
-                for(int i=1; i<14; i++){
+                UpdateMusicStream(abertura);
+                PlayMusicStream(abertura);
+                SetMusicVolume(abertura, 0.2);
+
+                DrawRectangle(160, 50, 310, 40, LIGHTGRAY);
+                DrawText("NIVEIS JA PASSADOS", 190, 60, 25, BLACK);
+                for(int i=1; i<13; i++){
                     if(maximo>=i){
                         sprintf(endereco, "%d", i);
                         DrawText(endereco, 305, 80+35*i, 20, WHITE);
@@ -600,6 +629,7 @@ int main(void)
 
             case GAMEPLAY: //MECANICAS DA TELA DE GAMEPLAY
             {
+                StopMusicStream(abertura);
                 mapa_desenhando(flag, mapa, imagens, fundo, level);
                 UpdateMusicStream(jogando);
                 SetMusicVolume(jogando, 0.08);
@@ -658,6 +688,7 @@ int main(void)
 
     apagar_jogadas(level);
     UnloadMusicStream(jogando);
+    UnloadMusicStream(abertura);
     UnloadSound(conseguiu);
     mapa_Unload(&imagens, &fundo);
     UnloadTexture(background);  
