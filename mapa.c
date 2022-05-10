@@ -56,11 +56,11 @@ int mapa_conseguiu(MAPA mapa){
 void mapa_declararpng(Quadrado **imagens){
 
     (*imagens)[0].imagem = LoadTexture("assets/mapa/adicionado mapa/crate_12.png");//box
-    (*imagens)[1].imagem = LoadTexture("assets/Individual Sprite/Crouch/Warrior_Crouch_1.png");//p
-    (*imagens)[2].imagem = LoadTexture("assets/Individual Sprite/Dash/Warrior_Dash_1_inv.png");//pa
-    (*imagens)[3].imagem = LoadTexture("assets/Individual Sprite/Dash/Warrior_Dash_1.png");//pd
-    (*imagens)[4].imagem = LoadTexture("assets/Individual Sprite/WallSlide_NoDust/Warrior_WallSlide_1.png");//ps
-    (*imagens)[5].imagem = LoadTexture("assets/Individual Sprite/Ladder-Grab/Warrior-Ladder-Grab_4.png");//pw
+    (*imagens)[1].imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_1.png");//p
+    (*imagens)[2].imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_5.png");//pa
+    (*imagens)[3].imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_6.png");//pd
+    (*imagens)[4].imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_2.png");//ps
+    (*imagens)[5].imagem = LoadTexture("assets/mapa/adicionado mapa/Layer 2_sprite_4.png");//pw
 }
 
 void mapa_fundo(Quadrado **fundo){
