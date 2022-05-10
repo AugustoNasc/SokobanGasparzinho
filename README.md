@@ -4,9 +4,12 @@ Projeto da disciplina de Introdução a Programação no qual consiste em criar 
 Link da biblioteca utilizada: https://www.raylib.com SokobanGasparzinho
 
 Para abrir o jogo:
+
 git clone https://github.com/AugustoNasc/SokobanGasparzinho.git
+
 Digite no powershell (Shift + Botão Direito no diretório) mingw32-make PLATFORM=PLATFORM_DESKTOP.
-Para abrir o jogo, execute o .exe.
+
+execute o .exe.
 
 
 Participantes do projeto: Augusto Nascimento de Oliveira, Edenn Weslley dos Santos Silva, Ênio Henrique Nunes Ribeiro, Gabriel Wanderlei Cabral da Silva, Maria Letícia do Nascimento Gaspar
