@@ -312,6 +312,9 @@ int main(void)
 
                             if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
                                 level=i;
+                                mapa=mapa_rezetar(level);
+                                POSICAO;
+                                mapa_especial(&mapa);
                                 currentScreen = GAMEPLAY;
                             }
                     }
