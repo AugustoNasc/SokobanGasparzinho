@@ -3,6 +3,12 @@ Projeto da disciplina de Introdução a Programação no qual consiste em criar 
 
 Link da biblioteca utilizada: https://www.raylib.com SokobanGasparzinho
 
+Para abrir o jogo:
+Digite no cmd git clone 
+Digite no powershell (Shift + Botão Direito no diretório) mingw32-make PLATFORM=PLATFORM_DESKTOP.
+Para abrir o jogo, execute o .exe.
+
+
 Participantes do projeto: Augusto Nascimento de Oliveira, Edenn Weslley dos Santos Silva, Ênio Henrique Nunes Ribeiro, Gabriel Wanderlei Cabral da Silva, Maria Letícia do Nascimento Gaspar
 # MAPAS DO JOGO
 ![mapa1](https://user-images.githubusercontent.com/103709764/167733014-df558502-b029-4344-93ff-0907b43e813d.png)
