@@ -24,7 +24,7 @@
 .PHONY: all clean
 
 # Define required raylib variables
-PROJECT_NAME       ?= Projeto 
+PROJECT_NAME       ?= SokobanGasparzinho
 RAYLIB_VERSION     ?= 3.8.0
 ## @TODO: Mude aqui para o caminho de onde estÃ¡ o raylib
 RAYLIB_PATH        ?= C:/raylib/raylib/src
