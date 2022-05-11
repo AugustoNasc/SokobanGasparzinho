@@ -414,7 +414,7 @@ int main(void)
                     PlayMusicStream(jogando);
                 }
                 //provisorio, so para admins
-                else if(IsKeyPressed(KEY_P)){ 
+                else if(IsKeyPressed(KEY_P)&&level!=13){ 
                     apagar_jogadas(level);
                     level++;
 
@@ -434,7 +434,7 @@ int main(void)
                     PlayMusicStream(jogando);
                 }
 
-                else if(IsKeyPressed(KEY_O)){ 
+                else if(IsKeyPressed(KEY_O)&&level!=1){ 
                     apagar_jogadas(level);
                     level--;
 
