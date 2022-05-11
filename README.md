@@ -13,6 +13,8 @@ execute o .exe.
 
 
 Participantes do projeto: Augusto Nascimento de Oliveira, Edenn Weslley dos Santos Silva, Ênio Henrique Nunes Ribeiro, Gabriel Wanderlei Cabral da Silva, Maria Letícia do Nascimento Gaspar
+
+Musica durante o jogo autoral: Edenn Weslley dos Santos Silva
 # MAPAS DO JOGO
 ![mapa1](https://user-images.githubusercontent.com/103709764/167733014-df558502-b029-4344-93ff-0907b43e813d.png)
 ![mapa2](https://user-images.githubusercontent.com/103709764/167733044-4f063af0-29e6-4f50-8541-5489b2d0d8f7.png)
