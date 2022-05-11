@@ -685,13 +685,13 @@ int main(void)
                 mapa_especial(&mapa);
 
 
-            StopMusicStream(jogando);
+            //StopMusicStream(jogando);
             PlaySound(conseguiu);
             SetSoundVolume(conseguiu, 0.3);
             POSICAO;
             flag=0;
 
-            PlayMusicStream(jogando);
+            //PlayMusicStream(jogando);
         }
     } //fim jogo
 
