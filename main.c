@@ -360,25 +360,25 @@ int main(void)
                             }
                     }
                 // inicio jogo   
-                if(IsKeyPressed(KEY_A)){ 
+                if(IsKeyPressed(KEY_A)||IsKeyPressed(KEY_LEFT)){ 
                     flag=1; 
                     voltando=0;
                     movimentos_move(&gX, &gY, flag, &mapa, level);
                 }
 
-                else if(IsKeyPressed(KEY_D)){ 
+                else if(IsKeyPressed(KEY_D)||IsKeyPressed(KEY_RIGHT)){ 
                     flag=2;
                     voltando=0;
                     movimentos_move(&gX, &gY, flag, &mapa, level);
                 }
 
-                else if(IsKeyPressed(KEY_S)){ 
+                else if(IsKeyPressed(KEY_S)||IsKeyPressed(KEY_DOWN)){ 
                     flag=3;
                     voltando=0;
                     movimentos_move(&gX, &gY, flag, &mapa, level);
                 }
 
-                else if(IsKeyPressed(KEY_W)){ 
+                else if(IsKeyPressed(KEY_W)||IsKeyPressed(KEY_UP)){ 
                     flag=4; 
                     voltando=0;
                     movimentos_move(&gX, &gY, flag, &mapa, level);
