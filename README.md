@@ -25,6 +25,11 @@ Musica durante o jogo autoral: Edenn Weslley dos Santos Silva
 ![mapa7](https://user-images.githubusercontent.com/103709764/167733177-2036efb7-3fbc-4c34-886e-250b3db155f2.png)
 ![mapa8](https://user-images.githubusercontent.com/103709764/167733187-f06f1de1-b0d7-4679-acfa-ecc11969fd15.png)
 ![mapa9](https://user-images.githubusercontent.com/103709764/167733190-7ab3d50a-0cf7-463f-a5a8-f0b8b1898faa.png)
+![mapa10](https://user-images.githubusercontent.com/103709764/167944686-6304074e-9091-4de4-bc48-8a3de5964068.png)
+![mapa11](https://user-images.githubusercontent.com/103709764/167944704-6a33793d-cb0c-4c3d-87de-123ecb6f2eac.png)
+![mapa12](https://user-images.githubusercontent.com/103709764/167944714-09a5974d-7165-4ec6-b2d6-ceaa82a6cd7e.png)
+![mapa13](https://user-images.githubusercontent.com/103709764/167944726-1c669c87-4f95-4a0e-8742-b0448e9a6854.png)
+
 
 # PERSONAGEM GASPARZINHO
 Imagens autorais: Edenn Weslley dos Santos Silva
