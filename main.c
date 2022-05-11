@@ -64,7 +64,7 @@ int main(void)
     mapa_declararpng(&imagens);
     mapa_fundo(&fundo);
     
-    jogando = LoadMusicStream("assets/musica/terror.wav");
+    jogando = LoadMusicStream("assets/musica/menumsc.mp3");
     PlayMusicStream(jogando);
 
     conseguiu = LoadSound("assets/musica/fim_fase.mp3");
