@@ -21,7 +21,7 @@ Link da biblioteca utilizada: https://www.raylib.com SokobanGasparzinho
   
   - Acesse o diretório do jogo
   
-  - Abra o terminal e digite: make && ./Projeto
+  - Abra o terminal e digite: make && ./SokobanGasparzinho
   
 
 <h4>Participantes do projeto:</h4> <a href="https://github.com/AugustoNasc" alt="Augusto" target="_blank">Augusto Nascimento de Oliveira</a>, Edenn Weslley dos Santos Silva, <a href="https://github.com/ribeirowski" alt="Enio" target="_blank">Ênio Henrique Nunes Ribeiro</a>, <a href="https://github.com/gawacasi" alt="Gabriel" target="_blank">Gabriel Wanderlei Cabral da Silva</a>, <a href="https://github.com/leticiagaspar" alt="Maria" target="_blank">Maria Letícia do Nascimento Gaspar</a>.
