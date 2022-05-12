@@ -3,18 +3,31 @@ Projeto da disciplina de Introdução a Programação no qual consiste em criar 
 
 Link da biblioteca utilizada: https://www.raylib.com SokobanGasparzinho
 
-Para abrir o jogo:
+<h3>Para abrir o jogo:</h3>
 
-git clone https://github.com/AugustoNasc/SokobanGasparzinho.git
+<h4>No Windows:</h4>
+  
+  - git clone https://github.com/AugustoNasc/SokobanGasparzinho.git
+  
+  - Acesse o diretório do jogo
+  
+  - Abra o powershell (Shift + Botão Direito no diretório) e digite: mingw32-make PLATFORM=PLATFORM_DESKTOP
+  
+  - Execute o .exe.
+  
+<h4>No Linux:</h4>
+  
+  - git clone https://github.com/AugustoNasc/SokobanGasparzinho.git
+  
+  - Acesse o diretório do jogo
+  
+  - Abra o terminal e digite: make && ./Projeto
+  
 
-Digite no powershell (Shift + Botão Direito no diretório) mingw32-make PLATFORM=PLATFORM_DESKTOP.
+<h4>Participantes do projeto:</h4> <a href="https://github.com/AugustoNasc" alt="Augusto" target="_blank">Augusto Nascimento de Oliveira</a>, Edenn Weslley dos Santos Silva, <a href="https://github.com/ribeirowski" alt="Enio" target="_blank">Ênio Henrique Nunes Ribeiro</a>, <a href="https://github.com/gawacasi" alt="Gabriel" target="_blank">Gabriel Wanderlei Cabral da Silva</a>, <a href="https://github.com/leticiagaspar" alt="Maria" target="_blank">Maria Letícia do Nascimento Gaspar</a>.
 
-execute o .exe.
+<h4>Musica durante o jogo autoral:</h4> Edenn Weslley dos Santos Silva
 
-
-Participantes do projeto: Augusto Nascimento de Oliveira, Edenn Weslley dos Santos Silva, Ênio Henrique Nunes Ribeiro, Gabriel Wanderlei Cabral da Silva, Maria Letícia do Nascimento Gaspar
-
-Musica durante o jogo autoral: Edenn Weslley dos Santos Silva
 # MAPAS DO JOGO
 ![mapa1](https://user-images.githubusercontent.com/103709764/167733014-df558502-b029-4344-93ff-0907b43e813d.png)
 ![mapa2](https://user-images.githubusercontent.com/103709764/167733044-4f063af0-29e6-4f50-8541-5489b2d0d8f7.png)
