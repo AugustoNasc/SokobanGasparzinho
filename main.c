@@ -414,7 +414,7 @@ int main(void)
                     PlayMusicStream(jogando);
                 }
                 //provisorio, so para admins
-                else if(IsKeyPressed(KEY_P)&&level!=13){ 
+                /*else if(IsKeyPressed(KEY_P)&&level!=13){ 
                     apagar_jogadas(level);
                     level++;
 
@@ -452,7 +452,7 @@ int main(void)
                     flag=0;
 
                     PlayMusicStream(jogando);
-                }
+                }*/
                             
             } break;
             case PARABENS:
