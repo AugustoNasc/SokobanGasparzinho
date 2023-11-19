@@ -1,7 +1,7 @@
 # SokobanGasparzinho
-Projeto da disciplina de Introdução a Programação no qual consiste em criar um jogo em C utilizando a biblioteca raylib.
+Projeto da disciplina de CES-11 no qual consiste em criar um jogo em C++ utilizando a biblioteca SFML.
 
-Link da biblioteca utilizada: https://www.raylib.com SokobanGasparzinho
+Link da biblioteca utilizada: https://www.sfml-dev.org/
 
 <h3>Para abrir o jogo:</h3>
 
@@ -24,9 +24,7 @@ Link da biblioteca utilizada: https://www.raylib.com SokobanGasparzinho
   - Abra o terminal e digite: make && ./SokobanGasparzinho
   
 
-<h4>Participantes do projeto:</h4> <a href="https://github.com/AugustoNasc" target="_blank" rel="noopener noreferrer">Augusto Nascimento de Oliveira</a>, <a href="https://github.com/Heridenew" target="_blank" rel="noopener noreferrer">Edenn Weslley dos Santos Silva, <a href="https://github.com/ribeirowski" target="_blank" rel="noopener noreferrer">Ênio Henrique Nunes Ribeiro</a>, <a href="https://github.com/gawacasi" target="_blank" rel="noopener noreferrer">Gabriel Wanderlei Cabral da Silva</a>, <a href="https://github.com/leticiagaspar" target="_blank" rel="noopener noreferrer">Maria Letícia do Nascimento Gaspar</a>.
-
-<h4>Musica durante o jogo autoral:</h4> Edenn Weslley dos Santos Silva
+<h4>Participantes do projeto:</h4> <a href="https://github.com/AugustoNasc" target="_blank" rel="noopener noreferrer">Augusto Nascimento de Oliveira</a>, <a href="https://github.com/paulov0911" target="_blank" rel="noopener noreferrer">Paulo vitor, <a href="https://github.com/AlarconEmanuel" target="_blank" rel="noopener noreferrer">Emanuel Alarcon</a>
 
 # MAPAS DO JOGO
 ![mapa1](https://user-images.githubusercontent.com/103709764/167733014-df558502-b029-4344-93ff-0907b43e813d.png)
@@ -45,7 +43,6 @@ Link da biblioteca utilizada: https://www.raylib.com SokobanGasparzinho
 
 
 # PERSONAGEM GASPARZINHO
-Imagens autorais: Edenn Weslley dos Santos Silva
 ![Layer 2_sprite_1](https://user-images.githubusercontent.com/103709764/167733262-27e58892-e2eb-48f7-acc8-4363b2b3a49b.png)
 ![Layer 2_sprite_2](https://user-images.githubusercontent.com/103709764/167733271-0404830b-700d-418a-ba14-46addd1f02dd.png)
 ![Layer 2_sprite_4](https://user-images.githubusercontent.com/103709764/167733286-0e67e669-d9a8-46e5-973d-2bc848a14692.png)
